@@ -10,7 +10,7 @@ import (
 
 func main() {
 	pref := tele.Settings{
-		Token:  os.Getenv("7204067582:AAFGgCvBskpK48d8yI_o7CvfYsf_xxKvpxs"),
+		Token:  os.Getenv("BOT_TOKEN"),
 		Poller: &tele.LongPoller{Timeout: 10 * time.Second},
 	}
 
