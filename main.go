@@ -24,5 +24,9 @@ func main() {
 		return c.Send("Hello!")
 	})
 
+	b.Handle("/hello", func(c tele.Context) error {
+		return c.Send("مرحبا")
+	})
+
 	b.Start()
 }
