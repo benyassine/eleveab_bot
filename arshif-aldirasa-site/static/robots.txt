@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arshif-aldirasa.netlify.app/sitemap.xml

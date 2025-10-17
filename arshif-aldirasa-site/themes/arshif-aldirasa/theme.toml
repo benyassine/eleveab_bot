@@ -1,0 +1,19 @@
+name = "Arshif Aldirasa"
+license = "MIT"
+licenselink = "https://github.com/arshif-aldirasa/theme/blob/main/LICENSE"
+description = "قالب تعليمي عربي لموقع أرشف الدارسة"
+homepage = "https://arshif-aldirasa.netlify.app"
+tags = ["arabic", "education", "rtl", "minimal"]
+features = ["rtl", "responsive", "seo", "social"]
+min_version = "0.80.0"
+
+[author]
+  name = "أرشف الدارسة"
+  homepage = "https://arshif-aldirasa.netlify.app"
+
+[config]
+  [config.params]
+    # Theme parameters
+    primaryColor = "#0077b6"
+    backgroundColor = "#ffffff"
+    fontFamily = "Cairo, Arial, sans-serif"
