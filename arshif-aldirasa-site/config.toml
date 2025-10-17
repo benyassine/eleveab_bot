@@ -1,0 +1,61 @@
+baseURL = "https://arshif-aldirasa.netlify.app"
+languageCode = "ar"
+title = "أرشف الدارسة - موقع تعليمي عربي"
+theme = "arshif-aldirasa"
+
+[params]
+  description = "موقع تعليمي عربي شامل للقوانين والدروس والأخبار التربوية"
+  author = "أرشف الدارسة"
+  keywords = ["تعليم", "دروس", "قوانين", "أخبار تربوية", "عربي"]
+  
+  # Social Media
+  twitter = "@arshif_aldirasa"
+  facebook = "arshif.aldirasa"
+  
+  # Google Analytics (يمكن تفعيله لاحقاً)
+  # googleAnalytics = "GA_TRACKING_ID"
+  
+  # Colors
+  primaryColor = "#0077b6"
+  backgroundColor = "#ffffff"
+  
+  # Font
+  fontFamily = "Cairo, Arial, sans-serif"
+
+[menu]
+  [[menu.main]]
+    name = "الرئيسية"
+    url = "/"
+    weight = 1
+  
+  [[menu.main]]
+    name = "القوانين"
+    url = "/laws/"
+    weight = 2
+  
+  [[menu.main]]
+    name = "الدروس"
+    url = "/lessons/"
+    weight = 3
+  
+  [[menu.main]]
+    name = "الأخبار"
+    url = "/news/"
+    weight = 4
+  
+  [[menu.main]]
+    name = "حول الموقع"
+    url = "/about/"
+    weight = 5
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  taxonomyTerm = ["HTML"]

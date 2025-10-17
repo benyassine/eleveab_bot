@@ -1,0 +1,127 @@
+{{ define "main" }}
+<div class="container">
+    <div class="page-header">
+        <h1>{{ .Title }}</h1>
+        {{ if .Content }}
+        <div class="page-content">
+            {{ .Content }}
+        </div>
+        {{ end }}
+    </div>
+    
+    <div class="articles-list">
+        {{ range .Pages }}
+        <article class="article-card">
+            <div class="article-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 يناير 2006" }}</time>
+                {{ if .Params.tags }}
+                <span class="tags">
+                    {{ range .Params.tags }}
+                    <span class="tag">{{ . }}</span>
+                    {{ end }}
+                </span>
+                {{ end }}
+            </div>
+            
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            
+            {{ if .Summary }}
+            <p class="article-summary">{{ .Summary }}</p>
+            {{ end }}
+            
+            <div class="article-footer">
+                <a href="{{ .Permalink }}" class="btn btn-outline">اقرأ المزيد</a>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</div>
+
+<style>
+.page-header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.page-content {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.articles-list {
+    display: grid;
+    gap: 2rem;
+}
+
+.article-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.tags {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tag {
+    background: #f0f8ff;
+    color: #0077b6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.article-card h2 {
+    margin-bottom: 1rem;
+}
+
+.article-card h2 a {
+    color: #333;
+    text-decoration: none;
+}
+
+.article-card h2 a:hover {
+    color: #0077b6;
+}
+
+.article-summary {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.article-footer {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .article-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .article-card {
+        padding: 1.5rem;
+    }
+}
+</style>
+{{ end }}
