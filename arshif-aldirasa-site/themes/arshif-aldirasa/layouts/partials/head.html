@@ -1,0 +1,64 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+  {{- if .IsHome -}}
+    {{ .Site.Title }}
+  {{- else -}}
+    {{ .Title }} | {{ .Site.Title }}
+  {{- end -}}
+</title>
+<meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+<link rel="canonical" href="{{ if .IsHome }}{{ .Site.BaseURL }}{{ else }}{{ .Permalink }}{{ end }}" />
+<meta name="theme-color" content="{{ with .Site.Params.primaryColor }}{{ . }}{{ else }}#0077b6{{ end }}" />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
+<meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ if .IsHome }}{{ .Site.BaseURL }}{{ else }}{{ .Permalink }}{{ end }}" />
+{{ with .Params.images }}
+<meta property="og:image" content="{{ index . 0 | absURL }}" />
+{{ else }}
+  {{ with .Params.ogImage }}
+  <meta property="og:image" content="{{ . | absURL }}" />
+  {{ else }}
+    {{ with .Site.Params.ogImage }}
+    <meta property="og:image" content="{{ . | absURL }}" />
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
+<meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+{{ with .Params.images }}
+<meta name="twitter:image" content="{{ index . 0 | absURL }}" />
+{{ else }}
+  {{ with .Params.ogImage }}
+  <meta name="twitter:image" content="{{ . | absURL }}" />
+  {{ else }}
+    {{ with .Site.Params.ogImage }}
+    <meta name="twitter:image" content="{{ . | absURL }}" />
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<link rel="icon" href="{{ "icons/favicon.svg" | relURL }}" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+
+{{ with site.GoogleAnalytics }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ . }}');
+</script>
+{{ end }}

@@ -1,0 +1,39 @@
+baseURL = "/"
+languageCode = "ar"
+title = "أرشيف الدراسة"
+theme = "arshif-aldirasa"
+defaultContentLanguage = "ar"
+paginate = 9
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params]
+  description = "منصة تعليمية عربية مبسطة"
+  primaryColor = "#0077b6"
+  tagline = "مصادر تعليمية وقوانين وأخبار تربوية"
+  ogImage = "/images/og-default.png"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
+
+[services]
+  [services.googleAnalytics]
+    id = "" # ضع مُعرف GA4 هنا إن وُجد
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[permalinks]
+  laws = "/laws/:slug/"
+  lessons = "/lessons/:slug/"
+  news = "/news/:slug/"

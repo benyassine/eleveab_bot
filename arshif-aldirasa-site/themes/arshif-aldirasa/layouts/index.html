@@ -1,0 +1,43 @@
+{{ define "main" }}
+<section class="hero">
+  <h1 class="hero-title">{{ .Site.Title }}</h1>
+  <p class="hero-subtitle">{{ with .Site.Params.tagline }}{{ . }}{{ else }}منصة تعليمية عربية مبسطة.{{ end }}</p>
+</section>
+
+<div class="search">
+  <input id="site-search" class="search-input" type="search" placeholder="ابحث عن قسم..." aria-label="بحث" />
+</div>
+
+<div id="cards" class="card-grid">
+  <article class="card" data-title="القوانين">
+    <h3>القوانين</h3>
+    <p>نصوص القوانين التعليمية.</p>
+    <a class="btn" href="{{ "/laws/" | relURL }}">تصفّح</a>
+  </article>
+  <article class="card" data-title="الدروس">
+    <h3>الدروس</h3>
+    <p>الدروس والمذكرات الدراسية.</p>
+    <a class="btn" href="{{ "/lessons/" | relURL }}">تصفّح</a>
+  </article>
+  <article class="card" data-title="الأخبار">
+    <h3>الأخبار</h3>
+    <p>الأخبار التربوية الحديثة.</p>
+    <a class="btn" href="{{ "/news/" | relURL }}">تصفّح</a>
+  </article>
+</div>
+
+<script>
+  (function(){
+    const input = document.getElementById('site-search');
+    const cards = Array.from(document.querySelectorAll('#cards .card'));
+    function filter(){
+      const q = (input.value || '').toLowerCase().trim();
+      cards.forEach(c => {
+        const t = (c.getAttribute('data-title') || '').toLowerCase();
+        c.style.display = t.includes(q) ? '' : 'none';
+      });
+    }
+    input.addEventListener('input', filter);
+  })();
+</script>
+{{ end }}

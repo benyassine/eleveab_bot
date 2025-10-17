@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ .Site.Title }}">
+      <img class="brand-icon" src="{{ "icons/favicon.svg" | relURL }}" alt="شعار" width="28" height="28" />
+      <span class="brand-name">{{ .Site.Title }}</span>
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <ul class="nav">
+        <li><a href="{{ "/" | relURL }}">الرئيسية</a></li>
+        <li><a href="{{ "/laws/" | relURL }}">القوانين</a></li>
+        <li><a href="{{ "/lessons/" | relURL }}">الدروس</a></li>
+        <li><a href="{{ "/news/" | relURL }}">الأخبار</a></li>
+        <li><a href="{{ "/about/" | relURL }}">حول الموقع</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

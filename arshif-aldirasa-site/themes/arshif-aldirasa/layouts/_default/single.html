@@ -1,0 +1,37 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    <div class="post-meta">
+      {{ with .Date }}<time datetime="{{ .Format "2006-01-02" }}">{{ .Format "02 يناير 2006" }}</time>{{ end }}
+    </div>
+  </header>
+
+  <div class="post-content">
+    {{ if and (eq .Section "lessons") (.Params.pdf) }}
+      <div class="pdf-viewer">
+        <iframe src="{{ .Params.pdf | relURL }}" title="عرض PDF" loading="lazy"></iframe>
+        <a class="btn" href="{{ .Params.pdf | relURL }}" download>تحميل الملف</a>
+      </div>
+    {{ end }}
+
+    {{ .Content }}
+  </div>
+
+  <footer class="post-footer">
+    <div class="share">
+      <span>مشاركة:</span>
+      {{ $u := .Permalink }}
+      {{ $t := .Title }}
+      <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ $u }}" target="_blank" rel="noopener">فيسبوك</a>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?url={{ $u }}&text={{ $t }}" target="_blank" rel="noopener">تويتر</a>
+      <a class="share-btn" href="https://wa.me/?text={{ $t }}%20{{ $u }}" target="_blank" rel="noopener">واتساب</a>
+    </div>
+
+    <nav class="post-nav">
+      <div class="post-prev">{{ with .PrevInSection }}← <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}</div>
+      <div class="post-next">{{ with .NextInSection }}<a href="{{ .RelPermalink }}">{{ .Title }}</a> →{{ end }}</div>
+    </nav>
+  </footer>
+</article>
+{{ end }}
